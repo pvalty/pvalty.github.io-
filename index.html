@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+            width: 1619px;
+            height: 851px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet-svg-shape-markers.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/lignes_tc_pmgf_fusionnees_0.js"></script>
+        <script src="data/arrets_fusionnes_pmgf_1.js"></script>
+        <script src="data/bornes_covoiturage_he_leman_2.js"></script>
+        <script src="data/gare_exploitee_gg_3.js"></script>
+        <script src="data/voie_ferree_gg_principales_h2025_4.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[46.10404950746765,5.785093725506013],[46.13919659807398,5.8769010535962805]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        function pop_lignes_tc_pmgf_fusionnees_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['num_ligne'] !== null ? autolinker.link(feature.properties['num_ligne'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['freq_mini'] !== null ? autolinker.link(feature.properties['freq_mini'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['gestion'] !== null ? autolinker.link(feature.properties['gestion'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['linename'] !== null ? autolinker.link(feature.properties['linename'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['layer'] !== null ? autolinker.link(feature.properties['layer'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['path'] !== null ? autolinker.link(feature.properties['path'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AOM'] !== null ? autolinker.link(feature.properties['AOM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_lignes_tc_pmgf_fusionnees_0_0(feature) {
+            switch(String(feature.properties['gestion'])) {
+                case 'ABG':
+                    return {
+                pane: 'pane_lignes_tc_pmgf_fusionnees_0',
+                opacity: 1,
+                color: 'rgba(83,237,119,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'BUT':
+                    return {
+                pane: 'pane_lignes_tc_pmgf_fusionnees_0',
+                opacity: 1,
+                color: 'rgba(237,205,115,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'CGN':
+                    return {
+                pane: 'pane_lignes_tc_pmgf_fusionnees_0',
+                opacity: 1,
+                color: 'rgba(53,93,212,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'Proximiti':
+                    return {
+                pane: 'pane_lignes_tc_pmgf_fusionnees_0',
+                opacity: 1,
+                color: 'rgba(65,211,211,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'TAC':
+                    return {
+                pane: 'pane_lignes_tc_pmgf_fusionnees_0',
+                opacity: 1,
+                color: 'rgba(128,200,51,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'TPG':
+                    return {
+                pane: 'pane_lignes_tc_pmgf_fusionnees_0',
+                opacity: 1,
+                color: 'rgba(200,14,17,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'TUB':
+                    return {
+                pane: 'pane_lignes_tc_pmgf_fusionnees_0',
+                opacity: 1,
+                color: 'rgba(134,51,217,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_lignes_tc_pmgf_fusionnees_0',
+                opacity: 1,
+                color: 'rgba(207,62,171,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_lignes_tc_pmgf_fusionnees_0');
+        map.getPane('pane_lignes_tc_pmgf_fusionnees_0').style.zIndex = 400;
+        map.getPane('pane_lignes_tc_pmgf_fusionnees_0').style['mix-blend-mode'] = 'normal';
+        var layer_lignes_tc_pmgf_fusionnees_0 = new L.geoJson(json_lignes_tc_pmgf_fusionnees_0, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_lignes_tc_pmgf_fusionnees_0',
+            layerName: 'layer_lignes_tc_pmgf_fusionnees_0',
+            pane: 'pane_lignes_tc_pmgf_fusionnees_0',
+            onEachFeature: pop_lignes_tc_pmgf_fusionnees_0,
+            style: style_lignes_tc_pmgf_fusionnees_0_0,
+        });
+        bounds_group.addLayer(layer_lignes_tc_pmgf_fusionnees_0);
+        map.addLayer(layer_lignes_tc_pmgf_fusionnees_0);
+        function pop_arrets_fusionnes_pmgf_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['stop_name'] !== null ? autolinker.link(feature.properties['stop_name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['stop_id'] !== null ? autolinker.link(feature.properties['stop_id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['gestion'] !== null ? autolinker.link(feature.properties['gestion'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['aom'] !== null ? autolinker.link(feature.properties['aom'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['layer'] !== null ? autolinker.link(feature.properties['layer'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['path'] !== null ? autolinker.link(feature.properties['path'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_arrets_fusionnes_pmgf_1_0(feature) {
+            switch(String(feature.properties['aom'])) {
+                case 'BUT':
+                    return {
+                pane: 'pane_arrets_fusionnes_pmgf_1',
+                radius: 2.4,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(238,185,70,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CAPG':
+                    return {
+                pane: 'pane_arrets_fusionnes_pmgf_1',
+                radius: 2.4,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(23,239,117,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CCG':
+                    return {
+                pane: 'pane_arrets_fusionnes_pmgf_1',
+                radius: 2.4,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(168,230,34,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Proximiti':
+                    return {
+                pane: 'pane_arrets_fusionnes_pmgf_1',
+                radius: 2.4,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(31,226,240,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'TAC':
+                    return {
+                pane: 'pane_arrets_fusionnes_pmgf_1',
+                radius: 2.4,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(81,206,55,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'TPG':
+                    return {
+                pane: 'pane_arrets_fusionnes_pmgf_1',
+                radius: 2.4,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(182,15,51,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'TUB':
+                    return {
+                pane: 'pane_arrets_fusionnes_pmgf_1',
+                radius: 2.4,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(127,87,219,1.0)',
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_arrets_fusionnes_pmgf_1',
+                radius: 2.4,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(72,142,227,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_arrets_fusionnes_pmgf_1');
+        map.getPane('pane_arrets_fusionnes_pmgf_1').style.zIndex = 401;
+        map.getPane('pane_arrets_fusionnes_pmgf_1').style['mix-blend-mode'] = 'normal';
+        var layer_arrets_fusionnes_pmgf_1 = new L.geoJson(json_arrets_fusionnes_pmgf_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_arrets_fusionnes_pmgf_1',
+            layerName: 'layer_arrets_fusionnes_pmgf_1',
+            pane: 'pane_arrets_fusionnes_pmgf_1',
+            onEachFeature: pop_arrets_fusionnes_pmgf_1,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_arrets_fusionnes_pmgf_1_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_arrets_fusionnes_pmgf_1);
+        map.addLayer(layer_arrets_fusionnes_pmgf_1);
+        function pop_bornes_covoiturage_he_leman_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['adresse'] !== null ? autolinker.link(feature.properties['adresse'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cpville'] !== null ? autolinker.link(feature.properties['cpville'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['nom_off'] !== null ? autolinker.link(feature.properties['nom_off'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['texte_popup'] !== null ? autolinker.link(feature.properties['texte_popup'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['lien_popup'] !== null ? autolinker.link(feature.properties['lien_popup'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_bornes_covoiturage_he_leman_2_0() {
+            return {
+                pane: 'pane_bornes_covoiturage_he_leman_2',
+                radius: 5.2,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(164,113,88,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_bornes_covoiturage_he_leman_2');
+        map.getPane('pane_bornes_covoiturage_he_leman_2').style.zIndex = 402;
+        map.getPane('pane_bornes_covoiturage_he_leman_2').style['mix-blend-mode'] = 'normal';
+        var layer_bornes_covoiturage_he_leman_2 = new L.geoJson(json_bornes_covoiturage_he_leman_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_bornes_covoiturage_he_leman_2',
+            layerName: 'layer_bornes_covoiturage_he_leman_2',
+            pane: 'pane_bornes_covoiturage_he_leman_2',
+            onEachFeature: pop_bornes_covoiturage_he_leman_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_bornes_covoiturage_he_leman_2_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_bornes_covoiturage_he_leman_2);
+        map.addLayer(layer_bornes_covoiturage_he_leman_2);
+        function pop_gare_exploitee_gg_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['noms'] !== null ? autolinker.link(feature.properties['noms'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['horizon'] !== null ? autolinker.link(feature.properties['horizon'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['mise_en_se'] !== null ? autolinker.link(feature.properties['mise_en_se'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['reseau'] !== null ? autolinker.link(feature.properties['reseau'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['date_maj'] !== null ? autolinker.link(feature.properties['date_maj'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['etat'] !== null ? autolinker.link(feature.properties['etat'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['source'] !== null ? autolinker.link(feature.properties['source'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['stationnt_'] !== null ? autolinker.link(feature.properties['stationnt_'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['autopartag'] !== null ? autolinker.link(feature.properties['autopartag'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['stationnt1'] !== null ? autolinker.link(feature.properties['stationnt1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['guichet'] !== null ? autolinker.link(feature.properties['guichet'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['desserte'] !== null ? autolinker.link(feature.properties['desserte'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['texte_popup'] !== null ? autolinker.link(feature.properties['texte_popup'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['lien_popup'] !== null ? autolinker.link(feature.properties['lien_popup'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_gare_exploitee_gg_3_0() {
+            return {
+                pane: 'pane_gare_exploitee_gg_3',
+                radius: 5.2,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(6,9,5,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_gare_exploitee_gg_3');
+        map.getPane('pane_gare_exploitee_gg_3').style.zIndex = 403;
+        map.getPane('pane_gare_exploitee_gg_3').style['mix-blend-mode'] = 'normal';
+        var layer_gare_exploitee_gg_3 = new L.geoJson(json_gare_exploitee_gg_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_gare_exploitee_gg_3',
+            layerName: 'layer_gare_exploitee_gg_3',
+            pane: 'pane_gare_exploitee_gg_3',
+            onEachFeature: pop_gare_exploitee_gg_3,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_gare_exploitee_gg_3_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_gare_exploitee_gg_3);
+        map.addLayer(layer_gare_exploitee_gg_3);
+        function pop_voie_ferree_gg_principales_h2025_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id2'] !== null ? autolinker.link(feature.properties['id2'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['commentair'] !== null ? autolinker.link(feature.properties['commentair'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['niveau_res'] !== null ? autolinker.link(feature.properties['niveau_res'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['type_voie'] !== null ? autolinker.link(feature.properties['type_voie'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['reseau'] !== null ? autolinker.link(feature.properties['reseau'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['date_maj'] !== null ? autolinker.link(feature.properties['date_maj'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['shape_len'] !== null ? autolinker.link(feature.properties['shape_len'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id_gm_tron'] !== null ? autolinker.link(feature.properties['id_gm_tron'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['texte_popup'] !== null ? autolinker.link(feature.properties['texte_popup'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['lien_popup'] !== null ? autolinker.link(feature.properties['lien_popup'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_voie_ferree_gg_principales_h2025_4_0() {
+            return {
+                pane: 'pane_voie_ferree_gg_principales_h2025_4',
+                opacity: 1,
+                color: 'rgba(26,14,8,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 4.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_voie_ferree_gg_principales_h2025_4');
+        map.getPane('pane_voie_ferree_gg_principales_h2025_4').style.zIndex = 404;
+        map.getPane('pane_voie_ferree_gg_principales_h2025_4').style['mix-blend-mode'] = 'normal';
+        var layer_voie_ferree_gg_principales_h2025_4 = new L.geoJson(json_voie_ferree_gg_principales_h2025_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_voie_ferree_gg_principales_h2025_4',
+            layerName: 'layer_voie_ferree_gg_principales_h2025_4',
+            pane: 'pane_voie_ferree_gg_principales_h2025_4',
+            onEachFeature: pop_voie_ferree_gg_principales_h2025_4,
+            style: style_voie_ferree_gg_principales_h2025_4_0,
+        });
+        bounds_group.addLayer(layer_voie_ferree_gg_principales_h2025_4);
+        map.addLayer(layer_voie_ferree_gg_principales_h2025_4);
+        setBounds();
+        var i = 0;
+        layer_arrets_fusionnes_pmgf_1.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['stop_name'] !== null?String('<div style="color: #000000; font-size: 6pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['stop_name']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_arrets_fusionnes_pmgf_1'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_lignes_tc_pmgf_fusionnees_0,layer_arrets_fusionnes_pmgf_1]);
+        map.on("zoomend", function(){
+            resetLabels([layer_lignes_tc_pmgf_fusionnees_0,layer_arrets_fusionnes_pmgf_1]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_lignes_tc_pmgf_fusionnees_0,layer_arrets_fusionnes_pmgf_1]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_lignes_tc_pmgf_fusionnees_0,layer_arrets_fusionnes_pmgf_1]);
+        });
+        </script>
+    </body>
+</html>
